@@ -1,7 +1,5 @@
-variable "rgs" {
-
-}
-variable "vnts" {}
+variable "rgs" {}
+variable "vnets" {}
 variable "subnets" {}
 variable "pips" {}
 variable "nics" {}
@@ -9,3 +7,7 @@ variable "nsg" {}
 variable "security_rule" {}
 variable "nsgass" {}
 variable "vms" {}
+variable "bastions" {}
+variable "app_gateway" {}
+variable "mysqlsvrs" {}
+variable "sqldbs" {}

@@ -16,9 +16,9 @@ provider "azurerm" {
 
 terraform {
   backend "azurerm" {
-    resource_group_name  = "rm-rgs"
-    storage_account_name = "rmca11"
-    container_name       = "rmca12"
-    key                  = "devtf.tfstate"
+    resource_group_name  = "BU1_rgs"
+    storage_account_name = "BU1_sa"
+    container_name       = "BU1_ca"
+    key                  = "BU1devtf.tfstate"
   }
 }

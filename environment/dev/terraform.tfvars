@@ -4,8 +4,8 @@ rgs = {
     location = "uk south"
   }
 }
-vnts = {
-  vnet = {
+vnets = {
+  vnet1 = {
     name                = "rm-network"
     location            = "uk south"
     resource_group_name = "rms11"
@@ -13,12 +13,18 @@ vnts = {
   }
 }
 subnets = {
-  subnet = {
+  subnet1 = {
     name                 = "rm-subnet"
     resource_group_name  = "rms11"
     virtual_network_name = "rm-network"
     address_prefixes     = ["10.0.1.0/24"]
-  }
+  },
+  subnet2 = {
+    name                 = "AzureBastionSubnet"
+    resource_group_name  = "rms11"
+    virtual_network_name = "rm-network"
+    address_prefixes     = ["10.0.1.0/27"]
+  },
 }
 
 pips = {
@@ -92,7 +98,46 @@ vms = {
     admin_username                  = "adminrm"
     admin_password                  = "adminrm@1234"
     disable_password_authentication = "False"
-    nicname                        = "rmsnics"
+    nicname                         = "rmsnics"
+  }
+}
+bastions = {
+  bastion = {
+    name                = "rm_bastion"
+    location            = "us south"
+    resource_group_name = "rm_rgs"
+    subnet_name         = "AzureBastionSubnet"
+    pip_name            = "rm_pip11"
+  }
+}
+app_gateway = {
+  app_gateway1 = {
+    name                = "rm_gateway"
+    location            = "us south"
+    resource_group_name = "rm_rgs"
+    subnet_name         = "rm_subnet"
+    pip_name            = "rm_pip11"
+  }
+}
+mysqlsvrs = {
+  svr1 = {
+    name                         = "rm_sqlserver"
+    resource_group_name          = "rm_rgs"
+    location                     = "us_south"
+    version                      = "12.0"
+    administrator_login          = "adminBU01"
+    administrator_login_password = "Logo@1212"
+  }
+}
+sqldbs = {
+  db1 = {
+    name         = "rm_db"
+    svr_name     = "rm_sqlserver"
+    collation    = "SQL_Latin1_General_CP1_CI_AS"
+    license_type = "LicenseIncluded"
+    max_size_gb  = 2
+    sku_name     = "S0"
+    enclave_type = "VBS"
   }
 }
 
